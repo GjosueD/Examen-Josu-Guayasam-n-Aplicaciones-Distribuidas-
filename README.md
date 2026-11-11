@@ -1,1 +1,1 @@
-# Examen-Josu-Guayasam-n-Aplicaciones-Distribuidas-
+# Examen-Josue Guayasamin-Aplicaciones-Distribuidas-
