@@ -1,0 +1,17 @@
+# Docker Compose para levantar el SERVIDOR de chat en un contenedor.
+# Los clientes se ejecutan fuera de Docker, en terminales de VS Code.
+services:
+  servidor:
+    build: ./servidor           # construye la imagen con servidor/Dockerfile
+    image: chat-servidor
+    container_name: chat-servidor
+    ports:
+      - "5000:5000"             # publica el puerto: anfitrión:contenedor
+    environment:
+      - CHAT_HOST=0.0.0.0       # escuchar en todas las interfaces del contenedor
+      - CHAT_PORT=5000
+    stdin_open: true            # mantiene abierta la entrada estándar (docker run -i)
+    tty: true                   # asigna una terminal (docker run -t) para que el
+                                # servidor pueda escribir mensajes con "docker attach"
+    stop_signal: SIGINT         # "docker compose down" envía Ctrl+C: el servidor avisa
+                                # a los clientes y se cierra de forma ordenada
